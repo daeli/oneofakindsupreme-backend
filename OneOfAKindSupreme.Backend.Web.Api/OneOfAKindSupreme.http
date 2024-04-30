@@ -1,0 +1,6 @@
+@OneOfAKindSupreme_HostAddress = http://localhost:5108
+
+GET {{OneOfAKindSupreme_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
