@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Projects\Commands\Delete\" />
+    <Folder Include="Projects\Commands\Update\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OneOfAKindSupreme.Backend.Core\OneOfAKindSupreme.Backend.Core.csproj" />
+  </ItemGroup>
+
 </Project>
