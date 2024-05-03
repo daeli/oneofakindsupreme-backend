@@ -5,6 +5,7 @@ namespace OneOfAKindSupreme.Backend.UseCases.Projects.Queries.Get
 {
     public class GetProjectQuery : IRequest<Project?>
     {
-        public required int Id { get; set; }
+        public GetProjectQuery(int id) { Id = id;  }
+        public int Id { get; set; }
     }
 }

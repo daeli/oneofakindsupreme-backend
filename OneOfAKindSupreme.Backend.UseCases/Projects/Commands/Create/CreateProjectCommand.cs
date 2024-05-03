@@ -5,6 +5,10 @@ namespace OneOfAKindSupreme.Backend.UseCases.Projects.Commands.Create
 {
     public class CreateProjectCommand : IRequest<int>
     {
-        public required Project Project { get; set; }
+        public CreateProjectCommand(string name, ProjectStatus status)
+        {
+            Project = new Project { Name = name, Status = status };
+        }
+        public Project Project { get; set; }
     }
 }
