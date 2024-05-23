@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using OneOfAKindSupreme.Backend.Core.Interfaces;
 using OneOfAKindSupreme.Backend.Core.Entities;
+using OneOfAKindSupreme.Backend.Core.Interfaces.Repository;
 
 namespace OneOfAKindSupreme.Backend.UseCases.Projects.Queries.Get
 {

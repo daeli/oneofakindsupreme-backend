@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using OneOfAKindSupreme.Backend.Core.Interfaces;
+using OneOfAKindSupreme.Backend.Core.Interfaces.Repository;
 using OneOfAKindSupreme.Backend.Infrastructure.Data.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OneOfAKindSupreme.Backend.Infrastructure.Configuration
 {

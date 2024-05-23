@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using OneOfAKindSupreme.Backend.Infrastructure.Data.EF;
 using OneOfAKindSupreme.Backend.Infrastructure.Configuration;
 using OneOfAKindSupreme.Backend.UseCases.Configuration;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using OneOfAKindSupreme.Backend.Core.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) ;
 });
 
+builder.Services.RegisterCoreServices();
 builder.Services.RegisterUseCaseServices();
 builder.Services.RegisterInfrastructureServices();
 

@@ -1,5 +1,4 @@
-﻿
-namespace OneOfAKindSupreme.Backend.Core.Interfaces
+﻿namespace OneOfAKindSupreme.Backend.Core.Interfaces.Repository
 {
     public interface IReadRepository<T> where T : class
     {

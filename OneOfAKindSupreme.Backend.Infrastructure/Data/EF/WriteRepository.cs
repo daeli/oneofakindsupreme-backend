@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OneOfAKindSupreme.Backend.Core.Interfaces;
+using OneOfAKindSupreme.Backend.Core.Interfaces.Repository;
 
 namespace OneOfAKindSupreme.Backend.Infrastructure.Data.EF
 {

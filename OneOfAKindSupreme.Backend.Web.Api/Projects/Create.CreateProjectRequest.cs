@@ -4,10 +4,10 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
 {
     public class CreateProjectRequest
     {
-        public const string Route = "/Projects";
+        public const string Route = "/projects";
 
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public string? Status { get; set; }
     }
 }

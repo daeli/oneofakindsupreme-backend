@@ -1,6 +1,6 @@
-﻿namespace OneOfAKindSupreme.Backend.Core.Interfaces
+﻿namespace OneOfAKindSupreme.Backend.Core.Interfaces.Repository
 {
-    public interface IWriteRepository<T> where T: class
+    public interface IWriteRepository<T> where T : class
     {
         /// <summary>
         /// Adds an entity in the database.
