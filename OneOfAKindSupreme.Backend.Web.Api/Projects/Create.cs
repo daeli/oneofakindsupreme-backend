@@ -31,6 +31,7 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
             var links = new List<Core.Entities.HypermediaLink>
             {
                 new Core.Entities.HypermediaLink(uri!, "self", "POST"),
+                new Core.Entities.HypermediaLink(uri!, "list-projects", "GET"),
                 new Core.Entities.HypermediaLink($"{uri}/{projectId}", "get-project", "GET"),
                 new Core.Entities.HypermediaLink($"{uri}/{projectId}", "update-project", "PUT"),
                 new Core.Entities.HypermediaLink($"{uri}/{projectId}", "delete-project", "DELETE")

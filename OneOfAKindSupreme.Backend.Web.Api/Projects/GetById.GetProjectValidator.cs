@@ -5,9 +5,9 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
 {
     public class GetProjectValidator : Validator<GetProjectByIdRequest>
     {
-        GetProjectValidator() 
+        public GetProjectValidator() 
         {
-            RuleFor(x => x.ProjectId).GreaterThan(0);
+            RuleFor(x => x.ProjectId).NotNull().NotEmpty().NotEqual(Guid.Empty);
         }
     }
 }
