@@ -10,7 +10,7 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
         private readonly List<string> errors = [];
         private readonly bool succeeded;
         private readonly IList<HypermediaLink>? hypermediaLinks;
-        public CreateProjectResponse(int id, string name, string status, IList<string> errors, bool succeeded, IList<HypermediaLink>? hypermediaLinks)
+        public CreateProjectResponse(Guid id, string name, string status, IList<string> errors, bool succeeded, IList<HypermediaLink>? hypermediaLinks)
         {
             project = new Project
             {

@@ -4,7 +4,7 @@ using OneOfAKindSupreme.Backend.Core.Interfaces.Repository;
 
 namespace OneOfAKindSupreme.Backend.UseCases.Projects.Commands.Create
 {
-    public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, int>
+    public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, Guid>
     {
         IWriteRepository<Project> repository;
         public CreateProjectCommandHandler(IWriteRepository<Project> repository) 
@@ -12,7 +12,7 @@ namespace OneOfAKindSupreme.Backend.UseCases.Projects.Commands.Create
             this.repository = repository;
         }
 
-        public async Task<int> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
             var addedEntity = await repository.AddAsync(request.Project, cancellationToken);
 

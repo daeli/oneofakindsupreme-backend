@@ -1,5 +1,5 @@
 ﻿namespace OneOfAKindSupreme.Backend.Web.Api.Projects
 {
-    public record ProjectRecord(int id, string Name, string Status);
+    public record ProjectRecord(Guid id, string Name, string Status);
     
 }

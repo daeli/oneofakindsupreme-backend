@@ -5,7 +5,7 @@ namespace OneOfAKindSupreme.Backend.UseCases.Projects.Commands.Update
 {
     public class UpdateProjectCommand : IRequest<Project> 
     {
-        public UpdateProjectCommand(int id, string Name, ProjectStatus status) 
+        public UpdateProjectCommand(Guid id, string Name, ProjectStatus status) 
         {
             Project = new Project { Id = id, Name = Name, Status = status };
         }

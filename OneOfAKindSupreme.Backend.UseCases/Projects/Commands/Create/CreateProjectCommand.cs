@@ -3,7 +3,7 @@ using OneOfAKindSupreme.Backend.Core.Entities;
 
 namespace OneOfAKindSupreme.Backend.UseCases.Projects.Commands.Create
 {
-    public class CreateProjectCommand : IRequest<int>
+    public class CreateProjectCommand : IRequest<Guid>
     {
         public CreateProjectCommand(string name, ProjectStatus status)
         {

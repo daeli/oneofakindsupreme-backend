@@ -18,14 +18,14 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
         {
             var result = await mediator.Send(new CreateProjectCommand(request.Name, request.Status.ToProjectStatus()), cancellationToken);
             
-            if (result > 0) 
+            if (result != Guid.Empty) 
             {
                 var response = new CreateProjectResponse(result, request.Name, request.Status!, [], true, GetLinksForProject(result));                
                 Response = response;
             }
         }
 
-        private IList<Core.Entities.HypermediaLink> GetLinksForProject(int projectId) 
+        private IList<Core.Entities.HypermediaLink> GetLinksForProject(Guid projectId) 
         {
             var uri = linkGenerator.GetUriByName(HttpContext, "OneOfAKindSupremeBackendWebApiProjectsCreate");            
             var links = new List<Core.Entities.HypermediaLink>
