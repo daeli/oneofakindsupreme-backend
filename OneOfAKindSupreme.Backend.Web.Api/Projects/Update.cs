@@ -1,5 +1,6 @@
 ﻿using FastEndpoints;
 using MediatR;
+using Microsoft.AspNetCore.Routing;
 using OneOfAKindSupreme.Backend.Core.Extensions;
 using OneOfAKindSupreme.Backend.UseCases.Projects.Commands.Update;
 
@@ -21,8 +22,24 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
             if (result != null) 
             {
                 var projectRecord = new ProjectRecord(result.Id, result.Name, result.Status.ToString());
-                Response = new UpdateProjectResponse(projectRecord);
+                Response = new UpdateProjectResponse(projectRecord, [], true, GetLinksForProject());
             }
+        }
+
+        private IList<Core.Entities.HypermediaLink> GetLinksForProject()
+        {
+            var host = HttpContext.Request.Host;
+            var path = HttpContext.Request.Path;
+            var scheme = HttpContext.Request.Scheme;
+            var links = new List<Core.Entities.HypermediaLink>
+            {
+                new Core.Entities.HypermediaLink($"{scheme}://{host}{path}", "self", "PUT"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}/projects", "list-projects", "GET"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}{path}", "get-project", "GET"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}/projects", "create-project", "POST"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}{path}", "delete-project", "DELETE")
+            };
+            return links;
         }
     }
 }

@@ -4,13 +4,12 @@ namespace OneOfAKindSupreme.Backend.Core.Extensions
 {
     public static class ProjectExtension
     {
-        public static ProjectStatus ToProjectStatus(this string? status)
-        {
-            if (status == null) return ProjectStatus.Pending;
-
-            if (status.ToLower() == "inprogress") return ProjectStatus.InProgress;
-
-            return ProjectStatus.Done;
-        }
+        public static ProjectStatus ToProjectStatus(this string? status) => status?.ToLower() switch 
+        { 
+            "pending" => ProjectStatus.Pending,
+            "inprogress" => ProjectStatus.InProgress,
+            "done" => ProjectStatus.Done,
+            _ => ProjectStatus.Pending,
+        };
     }
 }

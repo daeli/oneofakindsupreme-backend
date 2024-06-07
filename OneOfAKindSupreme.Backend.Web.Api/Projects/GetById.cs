@@ -1,6 +1,5 @@
 ﻿using FastEndpoints;
 using MediatR;
-using Microsoft.AspNetCore.Routing;
 using OneOfAKindSupreme.Backend.UseCases.Projects.Queries.Get;
 
 namespace OneOfAKindSupreme.Backend.Web.Api.Projects
@@ -22,12 +21,12 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
             if(result != null)
             {
                 var projectRecord = new ProjectRecord(result.Id, result.Name, result.Status.ToString());
-                var response = new GetByIdResponse(projectRecord, [], true, GetLinksForProject(result.Id));
+                var response = new GetByIdResponse(projectRecord, [], true, GetLinksForProject());
                 Response = response;
             }
         }
 
-        private IList<Core.Entities.HypermediaLink> GetLinksForProject(Guid projectId)
+        private IList<Core.Entities.HypermediaLink> GetLinksForProject()
         {
             var host = HttpContext.Request.Host;
             var path = HttpContext.Request.Path;

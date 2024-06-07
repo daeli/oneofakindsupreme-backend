@@ -8,7 +8,7 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
     {
         public override void Configure() 
         {
-            Get("/Projects");
+            Get("/projects");
             AllowAnonymous();
         }
 
@@ -18,11 +18,27 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
 
             if(result != null) 
             {
-                Response = new ProjectListResponse
-                {
-                    Projects = result.Select(p => new ProjectRecord(p.Id, p.Name, p.Status.ToString())).ToList(),
-                };
+                var projects = result.Select(p => new ProjectRecord(p.Id, p.Name, p.Status.ToString())).ToList();
+                var response = new ProjectListResponse(projects, [], true, GetLinksForProject());
+                Response = response;
             }
+        }
+
+        private IList<Core.Entities.HypermediaLink> GetLinksForProject()
+        {
+            var host = HttpContext.Request.Host;
+            var path = HttpContext.Request.Path;
+            var scheme = HttpContext.Request.Scheme;
+
+            var links = new List<Core.Entities.HypermediaLink>
+            {
+                new Core.Entities.HypermediaLink($"{scheme}://{host}{path}", "self", "GET"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}/project/{{project-id}}", "get-project", "GET"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}/projects", "create-project", "POST"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}{path}/{{project-id}}", "update-project", "PUT"),
+                new Core.Entities.HypermediaLink($"{scheme}://{host}{path}/{{project-id}}", "delete-project", "DELETE")
+            };
+            return links;
         }
     }
 }
