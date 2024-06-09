@@ -5,10 +5,21 @@ using OneOfAKindSupreme.Backend.UseCases.Configuration;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using OneOfAKindSupreme.Backend.Core.Configuration;
+using OneOfAKindSupreme.Backend.Infrastructure.Data.EF.Entities;
+using Microsoft.AspNetCore.Identity;
+using OneOfAKindSupreme.Backend.Infrastructure.Data.EF.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication()
+    .AddBearerToken(IdentityConstants.BearerScheme);
+
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<DataContext>()
+    .AddApiEndpoints();
 
 builder.Services.AddDbContext<DataContext>(options => 
 {
@@ -42,5 +53,7 @@ app.UseFastEndpoints()
     .UseSwaggerGen();
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.Run();
