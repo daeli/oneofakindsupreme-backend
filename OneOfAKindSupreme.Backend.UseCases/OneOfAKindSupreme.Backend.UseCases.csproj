@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\Commands\Delete\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\OneOfAKindSupreme.Backend.Core\OneOfAKindSupreme.Backend.Core.csproj" />
   </ItemGroup>
 
