@@ -15,9 +15,9 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
         {
             var result = await mediator.Send(new ListProjectsQuery(), cancellationToken);
 
-            if(result != null) 
+            if(result.IsSuccessful) 
             {
-                var projects = result.Select(p => new ProjectRecord(p.Id, p.Name, p.Status.ToString())).ToList();
+                var projects = result?.Data?.Select(p => new ProjectRecord(p.Id, p.Name, p.Status.ToString())).ToList();
                 var response = new ProjectListResponse(projects, [], true, GetLinksForProject());
                 Response = response;
             }
