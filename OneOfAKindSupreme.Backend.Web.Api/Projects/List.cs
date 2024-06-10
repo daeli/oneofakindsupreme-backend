@@ -8,8 +8,7 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
     {
         public override void Configure() 
         {
-            Get("/projects");
-            AllowAnonymous();
+            Get("/projects");           
         }
 
         public override async Task HandleAsync(CancellationToken cancellationToken) 

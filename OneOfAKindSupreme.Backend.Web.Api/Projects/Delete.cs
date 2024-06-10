@@ -9,7 +9,6 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
         public override void Configure()
         {
             Delete(DeleteProjectRequest.Route);
-            AllowAnonymous();
         }
 
         public override async Task HandleAsync(DeleteProjectRequest request, CancellationToken cancellationToken)

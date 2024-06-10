@@ -9,7 +9,6 @@ namespace OneOfAKindSupreme.Backend.Web.Api.Projects
         public override void Configure()
         {
             Get(GetProjectByIdRequest.Route);
-            AllowAnonymous();
         }
 
         public override async Task HandleAsync(GetProjectByIdRequest request, CancellationToken cancellationToken) 
